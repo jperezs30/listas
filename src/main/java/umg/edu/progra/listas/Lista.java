@@ -202,5 +202,71 @@ public class Lista {
 
         return contador;
     }
-   
+    
+    /*
+        Orden ascendente
+    */
+    public void ordenarAscendente() {
+        if (primero == null || primero.enlace == null) {
+            return; // Lista vacía o de un solo elemento, ya está ordenada.
+        }
+
+        boolean huboIntercambio;
+        Nodo actual;
+
+        do {
+            huboIntercambio = false;
+            actual = primero;
+
+            while (actual.enlace != null) {
+                if (actual.dato > actual.enlace.dato) {
+                    // Intercambiar valores
+                    int temp = actual.dato;
+                    actual.dato = actual.enlace.dato;
+                    actual.enlace.dato = temp;
+
+                    huboIntercambio = true;
+                }
+                actual = actual.enlace;
+            }
+        } while (huboIntercambio);
+    }
+
+    /*
+    Unir listas
+    */
+    public void unirListas(Lista segundaLista) {
+        if (primero == null) {
+            // Si la primera lista está vacía, se asigna la segunda
+            primero = segundaLista.primero;
+            return;
+        }
+
+        Nodo actual = primero;
+
+        // Recorremos hasta llegar al último nodo de la primera lista
+        while (actual.enlace != null) {
+            actual = actual.enlace;
+        }
+
+        // Unimos el último nodo de la primera lista con el primero de la segunda
+        actual.enlace = segundaLista.primero;
+    }
+    
+    
+      public void separarParesImpares(Lista listaPares, Lista listaImpares) {
+            Nodo actual = primero;
+
+            while (actual != null) {
+                if (actual.dato % 2 == 0) {
+                    // Insertar en lista de pares
+                    listaPares.insertarCabezaLista(actual.dato);
+                } else {
+                    // Insertar en lista de impares
+                    listaImpares.insertarCabezaLista(actual.dato);
+                }
+                actual = actual.enlace;
+            }
+       }
+
 }
