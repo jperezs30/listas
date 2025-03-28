@@ -1,5 +1,7 @@
 package umg.edu.progra.listas;
 
+import umg.edu.progra.listas.doblementeEnlazada.DoblementeEnlazada;
+
 /**
  *
  * @author Walter Cordova
@@ -8,6 +10,12 @@ public class Principal {
 
     public static void main(String[] args) {
 
+        listaenlazadaSimple();
+        listaenlazadaDoble(); 
+
+    }
+
+    public static void listaenlazadaSimple() {
         Lista lista = new Lista();
         lista.insertarCabezaLista(1);
         lista.insertarCabezaLista(2);
@@ -77,7 +85,37 @@ public class Principal {
         listaPares.visualizar();
         System.out.println("Impares");
         listaImpares.visualizar();
-        
+    }
+
+     public static void listaenlazadaDoble() {
+    	DoblementeEnlazada dll = new DoblementeEnlazada();
+         dll.insertAtEnd(10);
+         dll.insertAtEnd(20);
+         dll.insertAtEnd(30);
+         dll.insertAtBeginning(5);
+         
+         System.out.println("Lista en orden:");
+         dll.displayForward();
+         
+         System.out.println("Lista en orden inverso:");
+         dll.displayBackward();
+         
+         System.out.println("Eliminando 20: " + dll.delete(20));
+         dll.displayForward();
+         
+         System.out.println("Buscando 10: " + dll.search(10));
+         System.out.println("Buscando 50: " + dll.search(50));
+
+         System.out.println("Contando nodos:");
+         System.out.println(dll.contarNodos());
+
+         System.out.println("Insertar después de 10");
+         dll.insertarDespues(10, 11);
+         dll.displayForward();
+
+         System.out.println("Revertir lista");
+        dll.revertirLista();
+        dll.displayForward();
     }
 
 }
